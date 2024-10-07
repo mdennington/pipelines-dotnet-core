@@ -24,8 +24,19 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+      
+  test:
+
+    runs-on: ubuntu-latest
+    
+    steps:
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Publish
       run: dotnet publish -c Release -o website
     - name: Upload artifact for deployment job
